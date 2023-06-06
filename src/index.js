@@ -44,23 +44,13 @@ app.post('/signup', async (req, res) => {
         password: req.body.password
     }
 
-    const checking = await LogInCollection.findOne({ name: req.body.name })
+  
+    await LogInCollection.insertMany([data])
+    
+   
+   
 
-   try{
-    if (checking.name === req.body.name && checking.password===req.body.password) {
-        res.send("user details already exists")
-    }
-    else{
-        await LogInCollection.insertMany([data])
-    }
-   }
-   catch{
-    res.send("wrong inputs")
-   }
-
-    res.status(201).render("home", {
-        naming: req.body.name
-    })
+    res.render("home")
 })
 
 
@@ -70,7 +60,7 @@ app.post('/login', async (req, res) => {
         const check = await LogInCollection.findOne({ name: req.body.name })
 
         if (check.password === req.body.password) {
-            res.status(201).render("home", { naming: `${req.body.password}+${req.body.name}` })
+            res.status(201).render("home")
         }
 
         else {
@@ -92,6 +82,6 @@ app.post('/login', async (req, res) => {
 
 
 
-app.listen(5675 ,() => {
+app.listen(9085 ,() => {
     console.log('port connected');
 })
