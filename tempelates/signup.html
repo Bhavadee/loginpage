@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-     <link rel="stylesheet" href="css/login.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
 </head>
+
 <body>
-    
- <h2>signup</h2>
-   
-   <form action = "/signup" method = "POST">
-   <input type = "text" name = "username "placeholder = "name">
-    <input type = "password" name = "password "placeholder = "password">
-    <input class = "sub" type = "submit">
-   </form>
+  <div>
+    <form action="/submit" method="POST">
+      <h3>username:</h3>
+      <input type="text" id="username" name="username" required>
+      <h3>password:</h3>
+      <input type="password" id="password" name="password" required>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+    <a href="/signuo"><button>show</button></a>
+  </div>
 </body>
+
 </html>

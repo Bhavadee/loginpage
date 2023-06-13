@@ -9,5 +9,5 @@ const dataSchema = new Schema({
   password: String
 });
 
-const Data = mongoose.model('Data', dataSchema);
-module.exports=Data
+const Datas = mongoose.model('Data', dataSchema);
+module.exports= Datas

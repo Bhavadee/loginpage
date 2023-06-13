@@ -1,29 +1,35 @@
 const express = require("express")
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
+mongoose.connect('mongodb://127.0.0.1:27017/test')
+  .then(() => console.log('Connected!'));
+
+const Schema = mongoose.Schema;
+const dataSchema = new Schema({
+  username: String,
+  password: String
+});
+
+const Datas = mongoose.model('Data', dataSchema);
 const app = express()
-
-const Data = require("./mongodb")
-
-app.use(express.json())
-
-app.use(express.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(express.static('templates'))
 app.get('/', (req, res) => {
      res.sendFile(__dirname +'/tempelates/signup.html');
 })
-
-
-app.post('/signup', async (req, res) => {
+app.post('/submit', async (req, res) => {
     const { username, password } = req.body;
-    const newData = new Data({
+    const newData = new Datas({
       username,
       password
     });
-   
+   console.log(newData);
       await newData.save();
-      res.send('Data saved successfully');   
-})
+res.send("saved");
+      
+  });
 app.post('/login', async (req, res) => {
         const check = await LogInCollection.findOne({ name: req.body.name })
         if (check.password === req.body.password) {
@@ -34,6 +40,6 @@ app.post('/login', async (req, res) => {
             res.send("incorrect password")
         }
 })
-app.listen(9085 ,() => {
+app.listen(5000 ,() => {
     console.log('port connected');
 })
