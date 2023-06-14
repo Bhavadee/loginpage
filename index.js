@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static('tempelates'));
 
 app.get('/', (req, res) => {
-     res.sendFile(__dirname +'/tempelates/signup.html');
+     res.sendFile(__dirname +'/tempelates/login.html');
 })
 app.post('/submit', async (req, res) => {
     const { username, password } = req.body;
@@ -28,7 +28,7 @@ app.post('/submit', async (req, res) => {
    
       await newData.save();
        let data = await Datasa.find();
-        res.send(data);
+        res.send('saved');
 
       
   });
