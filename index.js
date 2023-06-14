@@ -14,10 +14,10 @@ const dataSchema = new Schema({
 const Datasa = mongoose.model('Data', dataSchema);
 const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.static('tempelates'));
 
-app.use(express.static('templates'))
 app.get('/', (req, res) => {
-     res.sendFile(__dirname +'/tempelates/login.html');
+     res.sendFile(__dirname +'/tempelates/signup.html');
 })
 app.post('/submit', async (req, res) => {
     const { username, password } = req.body;
