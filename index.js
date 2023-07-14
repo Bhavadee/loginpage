@@ -35,7 +35,7 @@ app.post('/submit', async (req, res) => {
 app.post('/login', async (req, res) => {
         const check = await Datasa.findOne({ name: req.body.name })
         if (check.password === req.body.password) {
-            res.send("correct")
+            res.send("corrrect")
         }
         else {
             res.send("incorrect password")
